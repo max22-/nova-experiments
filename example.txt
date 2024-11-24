@@ -1,0 +1,9 @@
+|| sugar
+|| oranges
+|| apples, apples
+|| cherries
+|| flour
+
+|      flour,      sugar,    apples|  apple cake
+|     apples,    oranges,  cherries| fruit salad
+|fruit salad, apple cake           |  fruit cake
