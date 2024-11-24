@@ -100,4 +100,5 @@ if len(sys.argv) != 2:
 (bag, rules) = parse(sys.argv[1])
 print(bag)
 bag = run(bag, rules)
+print("\nResult:")
 print(bag)
