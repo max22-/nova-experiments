@@ -85,9 +85,10 @@ def run(bag, rules):
         rule_applied = False
         for r in rules:
             bag, result = apply_rule(bag, r)
-            rule_applied = rule_applied or result
             if result:
+                rule_applied = True
                 print(bag)
+                break
         if not rule_applied:
             return bag
 
