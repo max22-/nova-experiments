@@ -39,6 +39,13 @@ class Bag:
             if not item in self.items.keys() or self.items[item] < count:
                 return False
         return True
+    
+    def remove_zeros(self):
+        new_items = {}
+        for item, count in self.items.items():
+            if count > 0:
+                new_items[item] = count
+        return Bag(new_items)
 
     def __str__(self):
         return str(self.items)
@@ -102,4 +109,4 @@ if len(sys.argv) != 2:
 print(bag)
 bag = run(bag, rules)
 print("\nResult:")
-print(bag)
+print(bag.remove_zeros())
