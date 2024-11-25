@@ -99,12 +99,12 @@ def run(bag, rules):
         if not rule_applied:
             return bag
 
-if len(sys.argv) != 2:
-    print(f"usage: python {sys.argv[0]} file")
-    sys.exit(1)
-
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print(f"usage: python {sys.argv[0]} file")
+        sys.exit(1)
+
     (bag, rules) = parse(sys.argv[1])
     print(bag)
     bag = run(bag, rules)
