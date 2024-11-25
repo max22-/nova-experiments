@@ -104,9 +104,9 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 
-
-(bag, rules) = parse(sys.argv[1])
-print(bag)
-bag = run(bag, rules)
-print("\nResult:")
-print(bag.remove_zeros())
+if __name__ == "__main__":
+    (bag, rules) = parse(sys.argv[1])
+    print(bag)
+    bag = run(bag, rules)
+    print("\nResult:")
+    print(bag.remove_zeros())
