@@ -102,7 +102,7 @@ def run(bag, rules):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print(f"usage: python {sys.argv[0]} file")
+        print(f"usage: python {sys.argv[0]} file.nv")
         sys.exit(1)
 
     (bag, rules) = parse(sys.argv[1])
