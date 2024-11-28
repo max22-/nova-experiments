@@ -5,7 +5,7 @@ class Bag:
     def __init__(self, items = {}):
         if isinstance(items, dict):
             self.items = items
-        elif isinstance(items, list):
+        elif isinstance(items, list) or isinstance(items, set):
             self.items = {}
             for item in items:
                 self.add_item(item)
@@ -34,11 +34,8 @@ class Bag:
             new_bag.remove_item(item, count)
         return new_bag
     
-    def contains(self, other):
-        for item, count in other.items.items():
-            if not item in self.items.keys() or self.items[item] < count:
-                return False
-        return True
+    def contains_items(self, items_set):
+        return all([item in self.items.keys() and self.items[item] > 0 for item in items_set])
     
     def remove_zeros(self):
         new_items = {}
@@ -67,6 +64,7 @@ def parse(file):
     def chop(x):
         return [item.strip() for item in x.split(',') if item != '']
     lines = [(chop(a), chop(b)) for [a, b] in lines]
+    print(f"lines = {lines}")
     bag = Bag()
     rules = []
     for (lhs, rhs) in lines:
@@ -74,14 +72,14 @@ def parse(file):
             for item in rhs:
                 bag.add_item(item)
         else:
-            rules.append((Bag(lhs), Bag(rhs)))
+            rules.append((set(lhs), Bag(rhs)))
     return (bag, rules)
 
 def apply_rule(bag, rule):
     lhs, rhs = rule
-    if bag.contains(lhs):
+    if bag.contains_items(lhs):
         print(f"applying rule {rule}")
-        bag -= lhs
+        bag -= Bag(lhs)
         bag += rhs
         return bag, True
     else:
