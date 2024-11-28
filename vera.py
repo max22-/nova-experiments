@@ -64,7 +64,6 @@ def parse(file):
     def chop(x):
         return [item.strip() for item in x.split(',') if item != '']
     lines = [(chop(a), chop(b)) for [a, b] in lines]
-    print(f"lines = {lines}")
     bag = Bag()
     rules = []
     for (lhs, rhs) in lines:
