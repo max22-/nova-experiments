@@ -1,41 +1,30 @@
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|| 1:1986, once
 
-|| M 1, CM, L, X 3, V, I 1
-|| X 3, V, I 3
-
-| M 2, M_ | M 3
-| M 1 , M_ | M 2
-| M _ | M 1
-| CM, C_ | M_
-| D, CD | CM
-| CD, C 1 | D
-| C 3, C 1 | CD
-| C 2, C 1 | C 3
-| C 1, C_ | C 2
-| C_ | C 1
-| XC, X 1 | C_
-| L, XL | XC
-| XL, X 1 | L
-| X 3, X 1 | XL
-| X 2, X 1 | X 3
-| X 1, X_ | X 2
-| X_ | X 1
-| IX, I 1 | X_
-| V, IV | IX
-| IV, I 1 | V
-| I 3, 1 | IV
-| I 2, 1 | I 3
-| I 1, 1 | I 2
-| 1 | I 1
+| M 2, M_, once | M 3, once
+| M 1 , M_, once | M 2, once
+| M _, once | M 1, once
+| CM, C_, once | M_, once
+| D, CD, once | CM, once
+| CD, C 1, once | D, once
+| C 3, C 1, once | CD, once
+| C 2, C 1, once | C 3, once
+| C 1, C_, once | C 2, once
+| C_, once | C 1, once
+| XC, X 1, once | C_, once
+| L, XL, once | XC, once
+| XL, X 1, once | L, once
+| X 3, X 1, once | XL, once
+| X 2, X 1, once | X 3, once
+| X 1, X_, once | X 2, once
+| X_, once | X 1, once
+| IX, I 1, once | X_, once
+| V, IV, once | IX, once
+| IV, I 1, once | V, once
+| I 3, 1, once | IV, once
+| I 2, 1, once | I 3, once
+| I 1, 1, once | I 2, once
+| 1, once | I 1, once
+| once |
 
 | I 1 | I
 | I 2 | I, I
