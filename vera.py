@@ -36,6 +36,12 @@ class Bag:
             new_bag.remove_item(item, count)
         return new_bag
     
+    def __mul__(self, constant):
+        new_bag = Bag()
+        for item, count in self.items.items():
+            new_bag.add_item(item, count * constant)
+        return new_bag
+    
     def contains_items(self, items_set):
         return all([item in self.items.keys() and self.items[item] > 0 for item in items_set])
     
@@ -93,9 +99,10 @@ def parse(file):
 def apply_rule(bag, rule):
     lhs, rhs = rule
     if bag.contains_items(lhs):
-        print(f"applying rule {rule}")
-        bag -= Bag(lhs)
-        bag += rhs
+        _min = min([bag.items[x] for x in lhs])
+        print(f"applying rule {rule} (min = {_min})")
+        bag -= Bag(lhs) * _min
+        bag += rhs * _min
         return bag, True
     else:
         return bag, False
