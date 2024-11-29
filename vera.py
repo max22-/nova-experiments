@@ -2,13 +2,15 @@ import sys
 from copy import copy
 
 class Bag:
-    def __init__(self, items = {}):
+    def __init__(self, items = None):
         if isinstance(items, dict):
             self.items = items
         elif isinstance(items, list) or isinstance(items, set):
             self.items = {}
             for item in items:
                 self.add_item(item)
+        elif items is None:
+            self.items = {}
         else:
             raise RuntimeError(f"can't create a bag from a `{type(items).__name__}`")
 
@@ -64,14 +66,28 @@ def parse(file):
     def chop(x):
         return [item.strip() for item in x.split(',') if item != '']
     lines = [(chop(a), chop(b)) for [a, b] in lines]
-    bag = Bag()
+    bag = Bag({})
     rules = []
     for (lhs, rhs) in lines:
+        rhs_bag = Bag()
+        for item in rhs:
+            if ':' in item:
+                try:
+                    [a, b] = item.split(':')
+                except ValueError:
+                    raise ParseError("too many `:`")
+                try:
+                    b = int(b)
+                except ValueError:
+                    raise ParseError("expected an integer after `:`")
+                rhs_bag.add_item(a, b)
+            else:
+                rhs_bag.add_item(item)
+                    
         if len(lhs) == 0:
-            for item in rhs:
-                bag.add_item(item)
+            bag += rhs_bag
         else:
-            rules.append((set(lhs), Bag(rhs)))
+            rules.append((set(lhs), rhs_bag))
     return (bag, rules)
 
 def apply_rule(bag, rule):
