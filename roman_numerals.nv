@@ -1,0 +1,51 @@
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+|comment| 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+|| M 1, CM, L, X 3, V, I 1
+|| X 3, V, I 3
+
+| M 2, M_ | M 3
+| M 1 , M_ | M 2
+| M _ | M 1
+| CM, C_ | M_
+| D, CD | CM
+| CD, C 1 | D
+| C 3, C 1 | CD
+| C 2, C 1 | C 3
+| C 1, C_ | C 2
+| C_ | C 1
+| XC, X 1 | C_
+| L, XL | XC
+| XL, X 1 | L
+| X 3, X 1 | XL
+| X 2, X 1 | X 3
+| X 1, X_ | X 2
+| X_ | X 1
+| IX, I 1 | X_
+| V, IV | IX
+| IV, I 1 | V
+| I 3, 1 | IV
+| I 2, 1 | I 3
+| I 1, 1 | I 2
+| 1 | I 1
+
+| I 1 | I
+| I 2 | I, I
+| I 3 | I, I, I
+| X 1 | X
+| X 2 | X, X
+| X 3 | X, X, X
+| C 1 | C
+| C 2 | C, C
+| C 3 | C, C, C
+| M 1 | M
+| M 2 | M, M
+| M 3 | M, M, M

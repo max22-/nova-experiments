@@ -1,0 +1,17 @@
+|| M, CM, L, X, X, X, V, I
+|| X, X, X, V, I, I, I
+
+| CM, C | M
+| D, C, C, C, C | CM
+| CD, C | D
+| C, C, C, C | CD
+| XC, X | C
+| L, X, X, X, X | XC
+| XL, X | L
+| X, X, X, X | XL
+| V, V | X
+| IX, I | X
+| V, IV | IX
+| IV, I | V
+| I, I, I, I | IV
+| 1 | I
