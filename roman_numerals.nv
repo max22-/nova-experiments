@@ -1,10 +1,10 @@
 || 1:1986, once
 || 1:38
 
-| M 2, M_, once | M 3, once
-| M 1 , M_, once | M 2, once
+| M 2, M, once | M 3, once
+| M 1 , M, once | M 2, once
 | M _, once | M 1, once
-| CM, C_, once | M_, once
+| CM, C_, once | M, once
 | D, CD, once | CM, once
 | CD, C 1, once | D, once
 | C 3, C 1, once | CD, once
