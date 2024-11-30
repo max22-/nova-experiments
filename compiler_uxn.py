@@ -15,6 +15,24 @@ def slug(identifier):
             res += c
     return res
 
+def uxnify_identifier(identifier):
+    chunks = []
+    chunk = ""
+    for c in identifier:
+        if c in [' ', '"']:
+            if chunk != '':
+                chunks.append(chunk)
+                chunk = ""
+            chunks.append(f"{ord(c):02x}")
+        else:
+            if chunk == '':
+                chunk = '"'
+            chunk += c
+    if chunk != '':
+        chunks.append(chunk)
+    return ' '.join(chunks)
+
+
 if len(sys.argv) != 3:
     print(f"usage: python {sys.argv[0]} file.nv output.tal")
     sys.exit(1)
@@ -25,6 +43,7 @@ print(f"rules = {rules}")
 
 f = open(sys.argv[2], "w")
 
+emit("|10 @Console    &vector $2 &read     $1 &pad    $5 &write  $1 &error  $1")
 emit("|0100")
 emit("@loop")
 
@@ -55,11 +74,23 @@ for (lhs, rhs) in rules:
 
 
 for r in registers:
-    emit(f"    ;{slug(r)} LDA2 print-short-decimal #0a18 DEO")
+    emit(f"    ;{slug(r)} LDA2 #0000 EQU2 ?{{")
+    emit("    #7c7c #18 DEO #18 DEO #2018 DEO")
+    emit(f"    ;str_{slug(r)} print-string #203a #18 DEO #18 DEO")
+    emit(f"    ;{slug(r)} LDA2 print-short-decimal #0a18 DEO }}")
 
 emit("BRK")
 
 f.write("""
+
+@print-string ( string* -- )
+	LDAk ,&not-end JCN
+	POP2 JMP2r
+	&not-end
+	LDAk .Console/write DEO
+	INC2
+	,print-string JMP
+
 @print-short-decimal ( short* -- )
 	#03e8 DIV2k
 		DUP ,print-byte-decimal/second JSR
@@ -70,18 +101,22 @@ f.write("""
 	NIP ,print-byte-decimal/second JMP
 
 @print-byte-decimal ( byte -- )
-	#64 DIVk DUP #30 ADD #18 DEO MUL SUB
+	#64 DIVk DUP #30 ADD .Console/write DEO MUL SUB
 	&second
-	#0a DIVk DUP #30 ADD #18 DEO MUL SUB
+	#0a DIVk DUP #30 ADD .Console/write DEO MUL SUB
 	&third
-	             #30 ADD #18 DEO
+	             #30 ADD .Console/write DEO
 	JMP2r
 """)
 
+emit("")
 emit("( registers )")
 
 for r in registers:
     count = bag.items[r] if r in bag.items.keys() else 0
     emit(f"@{slug(r)} {count:04x}")
+
+for r in registers:
+    emit(f"@str_{slug(r)} {uxnify_identifier(r)} $1")
 
 f.close()
