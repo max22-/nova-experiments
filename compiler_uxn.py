@@ -4,6 +4,7 @@ import vera
 def emit(s):
     f.write(s + "\n")
 
+# shamefully copied from Wryl's vera -> C compiler
 def slug(identifier):
     res = 'r_'
     for c in identifier:
