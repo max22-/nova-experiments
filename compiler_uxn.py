@@ -47,7 +47,8 @@ emit("|0100")
 emit("@loop")
 
 for i, (lhs, rhs) in enumerate(rules):
-    emit(f"@rule{i}")
+    if i != 0:
+        emit(f"@rule{i}")
     emit("    #ffff")
     label = f"rule{i+1}" if i < len(rules) - 1 else "end"
     for r in lhs:
