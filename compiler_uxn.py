@@ -43,26 +43,6 @@ bag, rules = vera.parse(sys.argv[1])
 f = open(sys.argv[2], "w")
 
 emit("|10 @Console    &vector $2 &read     $1 &pad    $5 &write  $1 &error  $1")
-emit("|0100")
-emit("@loop")
-
-for i, (lhs, rhs) in enumerate(rules):
-    if i != 0:
-        emit(f"@rule{i}")
-    emit("    #ffff")
-    label = f"rule{i+1}" if i < len(rules) - 1 else "end"
-    for r in lhs:
-        emit(f"    ;{slug(r)} LDA2 LTH2k ?{{ SWP2 }} POP2")
-        emit(f"    ORAk ?{{ POP2 ;{label} JMP2 }}")
-    emit("    ( -- min )")
-    emit("    STH2")
-    for r in lhs:
-        emit(f"    ;{slug(r)} LDA2k STH2kr SUB2 SWP2 STA2")
-    for r in rhs.items.keys():
-        emit(f"    ;{slug(r)} LDA2k #{rhs.items[r]:04x} STH2kr MUL2 ADD2 SWP2 STA2")
-    emit("    POP2r !loop")
-
-emit(f"@end")
 
 registers = set()
 for item in bag.items.keys():
@@ -73,12 +53,44 @@ for (lhs, rhs) in rules:
     for item in rhs.items.keys():
         registers.add(item)
 
+emit("( registers )")
 
 for r in registers:
-    emit(f"    ;{slug(r)} LDA2 #0000 EQU2 ?{{")
+    count = bag.items[r] if r in bag.items.keys() else 0
+    emit(f"@{slug(r)} $2")
+
+emit("|0100")
+
+for r in registers:
+    count = bag.items[r] if r in bag.items.keys() else 0
+    emit(f"    #{count:04x} .{slug(r)} STZ2")
+
+emit("@loop")
+
+for i, (lhs, rhs) in enumerate(rules):
+    if i != 0:
+        emit(f"@rule{i}")
+    emit("    #ffff")
+    label = f"rule{i+1}" if i < len(rules) - 1 else "end"
+    for r in lhs:
+        emit(f"    .{slug(r)} LDZ2 LTH2k ?{{ SWP2 }} POP2")
+        emit(f"    ORAk ?{{ POP2 ;{label} JMP2 }}")
+    emit("    ( -- min )")
+    emit("    STH2")
+    for r in lhs:
+        emit(f"    .{slug(r)} LDZ2k STH2kr SUB2 ROT STZ2")
+    for r in rhs.items.keys():
+        emit(f"    ;{slug(r)} LDZ2k #{rhs.items[r]:04x} STH2kr MUL2 ADD2 ROT STZ2")
+    emit("    POP2r !loop")
+
+emit(f"@end")
+
+
+for r in registers:
+    emit(f"    .{slug(r)} LDZ2 #0000 EQU2 ?{{")
     emit("    #7c7c #18 DEO #18 DEO #2018 DEO")
     emit(f"    ;str_{slug(r)} print-string #203a #18 DEO #18 DEO")
-    emit(f"    ;{slug(r)} LDA2 print-short-decimal #0a18 DEO }}")
+    emit(f"    .{slug(r)} LDZ2 print-short-decimal #0a18 DEO }}")
 
 emit("BRK")
 
@@ -111,11 +123,7 @@ f.write("""
 """)
 
 emit("")
-emit("( registers )")
 
-for r in registers:
-    count = bag.items[r] if r in bag.items.keys() else 0
-    emit(f"@{slug(r)} {count:04x}")
 
 for r in registers:
     emit(f"@str_{slug(r)} {uxnify_identifier(r)} $1")
