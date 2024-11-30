@@ -85,6 +85,8 @@ for i, (lhs, rhs) in enumerate(rules):
 
 emit(f"@end")
 
+emit("")
+emit("( let's display the bag )")
 
 for r in registers:
     emit(f"    .{slug(r)} LDZ2 #0000 EQU2 ?{{")
