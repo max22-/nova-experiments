@@ -38,8 +38,6 @@ if len(sys.argv) != 3:
     sys.exit(1)
 
 bag, rules = vera.parse(sys.argv[1])
-print(f"bag = {bag}")
-print(f"rules = {rules}")
 
 f = open(sys.argv[2], "w")
 
