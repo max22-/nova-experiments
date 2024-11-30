@@ -80,7 +80,7 @@ for i, (lhs, rhs) in enumerate(rules):
     for r in lhs:
         emit(f"    .{slug(r)} LDZ2k STH2kr SUB2 ROT STZ2")
     for r in rhs.items.keys():
-        emit(f"    ;{slug(r)} LDZ2k #{rhs.items[r]:04x} STH2kr MUL2 ADD2 ROT STZ2")
+        emit(f"    .{slug(r)} LDZ2k #{rhs.items[r]:04x} STH2kr MUL2 ADD2 ROT STZ2")
     emit("    POP2r !loop")
 
 emit(f"@end")
