@@ -50,7 +50,8 @@ for i, (lhs, rhs) in enumerate(rules):
     emit("    #ffff")
     for r in lhs:
         emit(f"    ;{slug(r)} LDA2 LTH2k ?{{ SWP2 }} POP2")
-    emit(f"    DUP2 #0000 NEQ2 ?{{ POP2 ;rule{i+1} JMP2 }}")
+    label = f"rule{i+1}" if i < len(rules) - 1 else "end"
+    emit(f"    DUP2 #0000 NEQ2 ?{{ POP2 ;{label} JMP2 }}")
     emit("    ( -- min )")
     emit("    STH2")
     for r in lhs:
@@ -59,7 +60,7 @@ for i, (lhs, rhs) in enumerate(rules):
         emit(f"    ;{slug(r)} LDA2k #{rhs.items[r]:04x} STH2kr MUL2 ADD2 SWP2 STA2")
     emit("    POP2r ;loop JMP2")
 
-emit(f"@rule{len(rules)}")
+emit(f"@end")
 
 registers = set()
 for item in bag.items.keys():
