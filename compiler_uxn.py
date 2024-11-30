@@ -49,10 +49,10 @@ emit("@loop")
 for i, (lhs, rhs) in enumerate(rules):
     emit(f"@rule{i}")
     emit("    #ffff")
+    label = f"rule{i+1}" if i < len(rules) - 1 else "end"
     for r in lhs:
         emit(f"    ;{slug(r)} LDA2 LTH2k ?{{ SWP2 }} POP2")
-    label = f"rule{i+1}" if i < len(rules) - 1 else "end"
-    emit(f"    ORAk ?{{ POP2 ;{label} JMP2 }}")
+        emit(f"    ORAk ?{{ POP2 ;{label} JMP2 }}")
     emit("    ( -- min )")
     emit("    STH2")
     for r in lhs:
