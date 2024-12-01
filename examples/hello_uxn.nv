@@ -13,79 +13,79 @@
 || !: 33
 || newline: 10
 
-| reset-deo-data, @deo-data | reset-deo-data
-| reset-deo-data |
+| reset deo data, @deo-data | reset deo data
+| reset deo data |
 
 
 
-| copy-H-to-deo-data, H | tmp, copy-H-to-deo-data, @deo-data
-| copy-H-to-deo-data | move-tmp-to-H:255
-| move-tmp-to-H, tmp | move-tmp-to-H, H
-| move-tmp-to-H |
+| copy H to deo data, H | tmp, copy H to deo data, @deo-data
+| copy H to deo data | move tmp to H:255
+| move tmp to H, tmp | move tmp to H, H
+| move tmp to H |
 
-| copy-e-to-deo-data, e | tmp, copy-e-to-deo-data, @deo-data
-| copy-e-to-deo-data | move-tmp-to-e:255
-| move-tmp-to-e, tmp | move-tmp-to-e, e
-| move-tmp-to-e |
+| copy e to deo data, e | tmp, copy e to deo data, @deo-data
+| copy e to deo data | move tmp to e:255
+| move tmp to e, tmp | move tmp to e, e
+| move tmp to e |
 
-| copy-l-to-deo-data, l | tmp, copy-l-to-deo-data, @deo-data
-| copy-l-to-deo-data | move-tmp-to-l:255
-| move-tmp-to-l, tmp | move-tmp-to-l, l
-| move-tmp-to-l |
+| copy l to deo data, l | tmp, copy l to deo data, @deo-data
+| copy l to deo data | move tmp to l:255
+| move tmp to l, tmp | move tmp to l, l
+| move tmp to l |
 
-| copy-o-to-deo-data, o | tmp, copy-o-to-deo-data, @deo-data
-| copy-o-to-deo-data | move-tmp-to-o:255
-| move-tmp-to-o, tmp | move-tmp-to-o, o
-| move-tmp-to-o |
+| copy o to deo data, o | tmp, copy o to deo data, @deo-data
+| copy o to deo data | move tmp to o:255
+| move tmp to o, tmp | move tmp to o, o
+| move tmp to o |
 
-| copy-comma-to-deo-data, comma | tmp, copy-comma-to-deo-data, @deo-data
-| copy-comma-to-deo-data | move-tmp-to-comma:255
-| move-tmp-to-comma, tmp | move-tmp-to-comma, comma
-| move-tmp-to-comma |
+| copy comma to deo data, comma | tmp, copy comma to deo data, @deo-data
+| copy comma to deo data | move tmp to comma:255
+| move tmp to comma, tmp | move tmp to comma, comma
+| move tmp to comma |
 
-| copy-space-to-deo-data, space | tmp, copy-space-to-deo-data, @deo-data
-| copy-space-to-deo-data | move-tmp-to-space:255
-| move-tmp-to-space, tmp | move-tmp-to-space, space
-| move-tmp-to-space |
+| copy space to deo data, space | tmp, copy space to deo data, @deo-data
+| copy space to deo data | move tmp to space:255
+| move tmp to space, tmp | move tmp to space, space
+| move tmp to space |
 
-| copy-U-to-deo-data, U | tmp, copy-U-to-deo-data, @deo-data
-| copy-U-to-deo-data | move-tmp-to-U:255
-| move-tmp-to-U, tmp | move-tmp-to-U, U
-| move-tmp-to-U |
+| copy U to deo data, U | tmp, copy U to deo data, @deo-data
+| copy U to deo data | move tmp to U:255
+| move tmp to U, tmp | move tmp to U, U
+| move tmp to U |
 
-| copy-x-to-deo-data, x | tmp, copy-x-to-deo-data, @deo-data
-| copy-x-to-deo-data | move-tmp-to-x:255
-| move-tmp-to-x, tmp | move-tmp-to-x, x
-| move-tmp-to-x |
+| copy x to deo data, x | tmp, copy x to deo data, @deo-data
+| copy x to deo data | move tmp to x:255
+| move tmp to x, tmp | move tmp to x, x
+| move tmp to x |
 
-| copy-n-to-deo-data, n | tmp, copy-n-to-deo-data, @deo-data
-| copy-n-to-deo-data | move-tmp-to-n:255
-| move-tmp-to-n, tmp | move-tmp-to-n, n
-| move-tmp-to-n |
+| copy n to deo data, n | tmp, copy n to deo data, @deo data
+| copy n to deo data | move tmp to n:255
+| move tmp to n, tmp | move tmp to n, n
+| move tmp to n |
 
-| copy-!-to-deo-data, ! | tmp, copy-!-to-deo-data, @deo-data
-| copy-!-to-deo-data | move-tmp-to-!:255
-| move-tmp-to-!, tmp | move-tmp-to-!, !
-| move-tmp-to-! |
+| copy ! to deo data, ! | tmp, copy ! to deo data, @deo data
+| copy ! to deo data | move tmp to !:255
+| move tmp to !, tmp | move tmp to !, !
+| move tmp to ! |
 
-| copy-newline-to-deo-data, newline | tmp, copy-newline-to-deo-data, @deo-data
-| copy-newline-to-deo-data | move-tmp-to-newline:255
-| move-tmp-to-newline, tmp | move-tmp-to-newline, newline
-| move-tmp-to-newline |
+| copy newline to deo data, newline | tmp, copy newline to deo data, @deo data
+| copy newline to deo data | move tmp to newline:255
+| move tmp to newline, tmp | move tmp to newline, newline
+| move tmp to newline |
 
-| trigger-deo | @deo
+| trigger deo | @deo
 
-| write-H | reset-deo-data:255, copy-H-to-deo-data:255, trigger-deo
-| write-e | reset-deo-data:255, copy-e-to-deo-data:255, trigger-deo
-| write-l | reset-deo-data:255, copy-l-to-deo-data:255, trigger-deo
-| write l a second time | write-l
-| write-o | reset-deo-data:255, copy-o-to-deo-data:255, trigger-deo
-| write-comma | reset-deo-data:255, copy-comma-to-deo-data:255, trigger-deo
-| write-space | reset-deo-data:255, copy-space-to-deo-data:255, trigger-deo
-| write-U | reset-deo-data:255, copy-U-to-deo-data:255, trigger-deo
-| write-x | reset-deo-data:255, copy-x-to-deo-data:255, trigger-deo
-| write-n | reset-deo-data:255, copy-n-to-deo-data:255, trigger-deo
-| write-! | reset-deo-data:255, copy-!-to-deo-data:255, trigger-deo
-| write-newline | reset-deo-data:255, copy-newline-to-deo-data:255, trigger-deo
+| write H | reset deo data:255, copy H to deo data:255, trigger deo
+| write e | reset deo data:255, copy e to deo data:255, trigger deo
+| write l | reset deo data:255, copy l to deo data:255, trigger deo
+| write l a second time | write l
+| write o | reset deo data:255, copy o to deo data:255, trigger deo
+| write comma | reset deo data:255, copy comma to deo data:255, trigger deo
+| write space | reset deo data:255, copy space to deo data:255, trigger deo
+| write U | reset deo data:255, copy U to deo data:255, trigger deo
+| write x | reset deo data:255, copy x to deo data:255, trigger deo
+| write n | reset deo data:255, copy n to deo data:255, trigger deo
+| write ! | reset deo data:255, copy ! to deo data:255, trigger deo
+| write newline | reset deo data:255, copy newline to deo data:255, trigger deo
 
-| hello uxn | write-H, write-e, write-l, write l a second time, write-o, write-comma, write-space, write-U, write-x, write-n, write-!, write-newline
+| hello uxn | write H, write e, write l, write l a second time, write o, write comma, write space, write U, write x, write n, write !, write newline
