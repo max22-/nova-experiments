@@ -58,17 +58,17 @@
 | move tmp to x, tmp | move tmp to x, x
 | move tmp to x |
 
-| copy n to deo data, n | tmp, copy n to deo data, @deo data
+| copy n to deo data, n | tmp, copy n to deo data, @deo-data
 | copy n to deo data | move tmp to n:255
 | move tmp to n, tmp | move tmp to n, n
 | move tmp to n |
 
-| copy ! to deo data, ! | tmp, copy ! to deo data, @deo data
+| copy ! to deo data, ! | tmp, copy ! to deo data, @deo-data
 | copy ! to deo data | move tmp to !:255
 | move tmp to !, tmp | move tmp to !, !
 | move tmp to ! |
 
-| copy newline to deo data, newline | tmp, copy newline to deo data, @deo data
+| copy newline to deo data, newline | tmp, copy newline to deo data, @deo-data
 | copy newline to deo data | move tmp to newline:255
 | move tmp to newline, tmp | move tmp to newline, newline
 | move tmp to newline |
