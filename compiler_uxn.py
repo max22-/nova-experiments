@@ -52,6 +52,10 @@ for (lhs, rhs) in rules:
         registers.add(item)
     for item in rhs.items.keys():
         registers.add(item)
+registers.add("@deo-addr")
+registers.add("@deo-data")
+registers.add("@deo")
+
 
 emit("( registers )")
 
@@ -66,6 +70,8 @@ for r in registers:
     emit(f"    #{count:04x} .{slug(r)} STZ2")
 
 emit("@loop")
+
+emit(f"    .{slug("@deo")} LDZ2 #0000 EQU2 ?{{ #0000 .{slug("@deo")} STZ2 .{slug("@deo-data")} LDZ2 NIP .{slug("@deo-addr")} LDZ2 NIP DEO }}")
 
 for i, (lhs, rhs) in enumerate(rules):
     if i != 0:
