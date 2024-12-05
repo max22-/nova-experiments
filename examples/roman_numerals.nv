@@ -1,30 +1,30 @@
 || 1:1986, once
 || 1:38
 
-| M 2, M, once | M 3, once
-| M 1 , M, once | M 2, once
-| M _, once | M 1, once
-| CM, C_, once | M, once
-| D, CD, once | CM, once
-| CD, C 1, once | D, once
-| C 3, C 1, once | CD, once
-| C 2, C 1, once | C 3, once
-| C 1, C_, once | C 2, once
-| C_, once | C 1, once
-| XC, X 1, once | C_, once
-| L, XL, once | XC, once
-| XL, X 1, once | L, once
-| X 3, X 1, once | XL, once
-| X 2, X 1, once | X 3, once
-| X 1, X_, once | X 2, once
-| X_, once | X 1, once
-| IX, I 1, once | X_, once
-| V, IV, once | IX, once
-| IV, I 1, once | V, once
-| I 3, 1, once | IV, once
-| I 2, 1, once | I 3, once
-| I 1, 1, once | I 2, once
-| 1, once | I 1, once
+| M 2, M, once? | M 3
+| M 1 , M, once? | M 2
+| M _, once? | M 1
+| CM, C_, once? | M
+| D, CD, once? | CM
+| CD, C 1, once? | D
+| C 3, C 1, once? | CD
+| C 2, C 1, once? | C 3
+| C 1, C_, once? | C 2
+| C_, once? | C 1
+| XC, X 1, once? | C_
+| L, XL, once? | XC
+| XL, X 1, once? | L
+| X 3, X 1, once? | XL
+| X 2, X 1, once? | X 3
+| X 1, X_, once? | X 2
+| X_, once? | X 1
+| IX, I 1, once? | X_
+| V, IV, once? | IX
+| IV, I 1, once? | V
+| I 3, 1, once? | IV
+| I 2, 1, once? | I 3
+| I 1, 1, once? | I 2
+| 1, once? | I 1
 | once |
 
 | I 1 | I
