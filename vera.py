@@ -102,6 +102,10 @@ def parse(file):
         if len(lhs) == 0:
             bag += rhs_bag
         else:
+            for i in range(len(lhs)):
+                if lhs[i].endswith('?'):
+                    lhs[i] = lhs[i][0:-1]
+                    rhs_bag.add_item(lhs[i])
             rules.append((set(lhs), rhs_bag))
     return (bag, rules)
 
