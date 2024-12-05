@@ -63,8 +63,17 @@ class ParseError(Exception):
 
 def parse(file):
     with open(file, 'r') as f:
-        lines = f.readlines()
-    lines = [line.strip().split('|')[1:] for line in lines]
+        data = f.read().lstrip()
+    separator = data[0]
+    sep_counter = 0
+    lines = []
+    for c in data:
+        if c == separator:
+            if sep_counter % 2 == 0:
+                lines.append("")
+            sep_counter += 1
+        lines[-1] += c
+    lines = [line.strip().split(separator)[1:] for line in lines]
     lines = [line for line in lines if len(line) > 0]
     for i, line in enumerate(lines):
         if len(line) != 2:
