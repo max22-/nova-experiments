@@ -60,7 +60,6 @@ registers.add("@deo")
 emit("( registers )")
 
 for r in registers:
-    count = bag.items[r] if r in bag.items.keys() else 0
     emit(f"@{slug(r)} $2")
 
 emit("|0100")
