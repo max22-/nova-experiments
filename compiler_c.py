@@ -57,7 +57,8 @@ emit("#define MIN(a, b) ((a) < (b) ? (a) : (b))")
 emit("")
 emit("/* Ports */")
 for p in ports:
-    emit(f"uint32_t {slug(p)};")
+    count = bag.items[p] if p in bag.items.keys() else 0
+    emit(f"uint32_t {slug(p)} = {count};")
 emit("")
 
 emit("int vera(void) {")
