@@ -1,4 +1,5 @@
 import sys
+import os
 import vera
 
 def emit(s):
@@ -49,14 +50,17 @@ for (lhs, rhs) in rules:
         else:
             registers.add(item)
 
-emit("#include <stdint.h>")
+emit("#include <stddef.h>")
+emit(f'#include "{os.path.basename(h_file)}"')
 emit("")
 emit("#define MIN(a, b) ((a) < (b) ? (a) : (b))")
 emit("")
+emit("/* Ports */")
 for p in ports:
     emit(f"uint32_t {slug(p)};")
+emit("")
 
-emit("int vera() {")
+emit("int vera(void) {")
 for r in registers:
     count = bag.items[r] if r in bag.items.keys() else 0
     emit(f"    static uint32_t {slug(r)} = {count};")
@@ -83,3 +87,14 @@ for i, (lhs, rhs) in enumerate(rules):
     emit("    return 1;")
     emit("")
 emit('}')
+
+f.close()
+
+with open(h_file, 'w') as f:
+    emit("#include <stdint.h>")
+    emit("")
+    emit("/* Ports */")
+    for p in ports:
+        emit(f"extern uint32_t {slug(p)};")
+    emit("")
+    emit("int vera(void);")
