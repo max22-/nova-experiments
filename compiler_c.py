@@ -63,8 +63,9 @@ emit("")
 
 emit("int vera(void) {")
 for r in registers:
-    count = bag.items[r] if r in bag.items.keys() else 0
-    emit(f"    static uint32_t {slug(r)} = {count};")
+    if not r in ports:
+        count = bag.items[r] if r in bag.items.keys() else 0
+        emit(f"    static uint32_t {slug(r)} = {count};")
 emit("    uint32_t m; /* min */")
 emit("")
 
